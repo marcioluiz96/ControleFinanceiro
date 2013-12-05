@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ControleFinanceiro</string>
+    <string name="app_name">Controle Financeiro</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="menu_principal">Menu</string>
+    <string name="textDescricao">Descrição:</string>
+    <string name="textValor"> Valor:</string>
+    <string name="textData">Data:</string>
+    
+    <string name="btnCadastrar">Cadastrar</string>
+    <string name="lbCadastarDis">Cadastrar nova despesa</string>
+    <string name="lbCadastarGan">Cadastrar novo ganho</string>
+    <string name="textLocal">Local:</string>
+    <string name="textSaldo"> </string>
+    <string name="textDataIni">Data Inicial</string>
+    <string name="textDataFim">Data Final</string>
+    
 
 </resources>

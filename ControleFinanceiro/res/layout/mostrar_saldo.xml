@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    <TextView
+        android:id="@+id/textLab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/labData"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="@string/textData" />
+
+        <EditText
+            android:id="@+id/textoDataIni"
+            android:focusable="false"
+            android:singleLine="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/textDataIni" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/textoDataFim"
+            android:focusable="false"
+            android:singleLine="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/textDataFim" />
+    </LinearLayout>
+	
+
+	<Button
+	    android:id="@+id/buscar"
+	    android:onClick="saldo"
+	    style="?android:attr/buttonStyleSmall"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="Mostrar Saldo" />
+
+</LinearLayout>
