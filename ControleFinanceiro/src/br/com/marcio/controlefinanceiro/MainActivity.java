@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
 		sqlDespesas.append("_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, ");
 		sqlDespesas.append("descricao VARCHAR(120),");
 		sqlDespesas.append("local VARCHAR(100),");
-		sqlDespesas.append("valor DOUBLE,");
+		sqlDespesas.append("valor BIGDECIMAL,");
 		sqlDespesas.append("data DATE)");
 		db.execSQL(sqlDespesas.toString());
 
@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
 		sqlGanho.append("_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, ");
 		sqlGanho.append("descricao VARCHAR(120),");
 		sqlGanho.append("local VARCHAR(100),");
-		sqlGanho.append("valor DOUBLE,");
+		sqlGanho.append("valor BIGDECIMAL,");
 		sqlGanho.append("data DATE)");
 		db.execSQL(sqlGanho.toString());
 

@@ -1,5 +1,6 @@
 package br.com.marcio.controlefinanceiro;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
 
 import android.app.Activity;
@@ -124,13 +125,15 @@ public class MostrarSaldo extends Activity {
 				TextView texto = (TextView)findViewById(R.id.textLab);
 				
 				if (cursor.moveToFirst() && cursor1.moveToFirst()) {
+					BigDecimal total= new BigDecimal(cursor.getString(0));
+					BigDecimal total1= new BigDecimal(cursor1.getString(0));
+					BigDecimal Rtotal= new BigDecimal(0);
+					Rtotal = total1.subtract(total);
 					
-					double total = cursor.getInt(0);
-					double total1 = cursor1.getInt(0);
-					double tTotal = total1-total;
+					
 					
 					texto.setTextSize(20);
-					texto.setText("Seu Saldo é De: R$ "+String.valueOf(tTotal));
+					texto.setText("Seu Saldo é De: R$ "+String.valueOf(Rtotal));
 					
 					}
 				

@@ -103,9 +103,9 @@ public class CadastrarDispesa extends Activity {
 				ContentValues ctv = new ContentValues();
 				ctv.put("descricao", descricao.getText().toString());
 				ctv.put("local", local.getText().toString());
-				//String v=valor.getText().toString();
-				//v=v.replace(',','.');
-				ctv.put("valor", Double.parseDouble(valor.getText().toString()));
+				String v=valor.getText().toString();
+				v=v.replace(',','.');
+				ctv.put("valor", v);
 				ctv.put("data", data.getText().toString());
 
 				if (db.insert("despesas", "_id", ctv) > 0) {
