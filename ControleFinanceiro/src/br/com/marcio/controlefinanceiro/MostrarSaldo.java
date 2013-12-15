@@ -18,7 +18,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 public class MostrarSaldo extends Activity {
 	String txt1;
 	String txt2;
@@ -31,8 +30,7 @@ public class MostrarSaldo extends Activity {
 	private int mDay;
 
 	static final int DATE_DIALOG_ID = 0;
-	static final int DATE_DIALOG_ID_2 =1;
-	
+	static final int DATE_DIALOG_ID_2 = 1;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -40,27 +38,25 @@ public class MostrarSaldo extends Activity {
 
 		txtDataIni = (EditText) findViewById(R.id.textoDataIni);
 		txtDataFim = (EditText) findViewById(R.id.textoDataFim);
-		
-		
+
 		txtDataIni.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
 				showDialog(DATE_DIALOG_ID);
-				aux=1;
+				aux = 1;
 
 			}
 		});
-		
-		
+
 		txtDataFim.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
 				showDialog(DATE_DIALOG_ID_2);
-				aux=2;
+				aux = 2;
 
 			}
 		});
-		
+
 	}
 
 	@Override
@@ -73,15 +69,14 @@ public class MostrarSaldo extends Activity {
 
 		switch (id) {
 		case DATE_DIALOG_ID:
-			
+
 			return new DatePickerDialog(this, mDateSetListener, ano, mes, dia);
 		case DATE_DIALOG_ID_2:
 			return new DatePickerDialog(this, mDateSetListener, ano, mes, dia);
-			
+
 		}
 		return null;
 	}
-	
 
 	private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
 
@@ -95,50 +90,52 @@ public class MostrarSaldo extends Activity {
 	};
 
 	private void updateDisplay() {
-		if(aux==1){
-		txtDataIni.setText(new StringBuilder()
-				// Month is 0 based so add 1
-		.append(mYear).append("-").append(mMonth + 1)
-		.append("-").append(mDay));
-		txt1=txtDataIni.getText().toString();
-		aux=0;
+		if (aux == 1) {
+			txtDataIni.setText(new StringBuilder()
+					// Month is 0 based so add 1
+					.append(mDay).append("/").append(mMonth + 1).append("/")
+					.append(mYear));
+			txt1 = txtDataIni.getText().toString();
+			aux = 0;
+		} else if (aux == 2) {
+			txtDataFim.setText(new StringBuilder()
+					// Month is 0 based so add 1
+					.append(mDay).append("/").append(mMonth + 1).append("/")
+					.append(mYear));
+			txt2 = txtDataFim.getText().toString();
+			aux = 0;
 		}
-		else if(aux==2){
-		txtDataFim.setText(new StringBuilder()
-		// Month is 0 based so add 1
-		.append(mYear).append("-").append(mMonth + 1)
-		.append("-").append(mDay));
-		txt2=txtDataFim.getText().toString();
-		aux=0;
-		}
-		
+
 	}
-	public void saldo(View saldo){
-		try{
-			
-			SQLiteDatabase db = openOrCreateDatabase(
-					"controleFinanceiro.db", Context.MODE_PRIVATE, null);
-			
-				Cursor cursor =db.rawQuery("SELECT sum(valor) FROM despesas WHERE data between '"+txt1+"' AND '"+txt2+"'", null);
-				Cursor cursor1 =db.rawQuery("SELECT sum(valor) FROM ganhos WHERE data between '"+txt1+"' AND '"+txt2+"'", null);
-				
-				TextView texto = (TextView)findViewById(R.id.textLab);
-				
-				if (cursor.moveToFirst() && cursor1.moveToFirst()) {
-					BigDecimal total= new BigDecimal(cursor.getString(0));
-					BigDecimal total1= new BigDecimal(cursor1.getString(0));
-					BigDecimal Rtotal= new BigDecimal(0);
-					Rtotal = total1.subtract(total);
-					
-					
-					
-					texto.setTextSize(20);
-					texto.setText("Seu Saldo é De: R$ "+String.valueOf(Rtotal));
-					
-					}
-				
-				db.close();
-				intent = new Intent(this,MostrarSaldo.class);
+
+	public void saldo(View saldo) {
+		try {
+
+			SQLiteDatabase db = openOrCreateDatabase("controleFinanceiro.db",
+					Context.MODE_PRIVATE, null);
+
+			Cursor cursor = db.rawQuery(
+					"SELECT sum(valor) FROM despesas WHERE data between '"
+							+ txt1 + "' AND '" + txt2 + "'", null);
+			Cursor cursor1 = db.rawQuery(
+					"SELECT sum(valor) FROM ganhos WHERE data between '" + txt1
+							+ "' AND '" + txt2 + "'", null);
+
+			TextView texto = (TextView) findViewById(R.id.textLab);
+
+			if (cursor.moveToFirst() && cursor1.moveToFirst()) {
+				BigDecimal total = new BigDecimal(cursor.getString(0));
+				BigDecimal total1 = new BigDecimal(cursor1.getString(0));
+				BigDecimal Rtotal = new BigDecimal(0);
+				Rtotal = total1.subtract(total);
+
+				texto.setTextSize(20);
+				texto.setText("Seu Saldo é De: R$ " + String.valueOf(Rtotal));
+
+			}
+
+			db.close();
+			intent = new Intent(this, MostrarSaldo.class);
 		} catch (Exception exception) {
 			Toast.makeText(getBaseContext(), exception.getMessage(),
 					Toast.LENGTH_SHORT).show();

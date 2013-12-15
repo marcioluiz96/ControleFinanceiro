@@ -71,8 +71,8 @@ public class CadastrarGanho extends Activity {
 	private void updateDisplay() {
 		txtData.setText(new StringBuilder()
 				// Month is 0 based so add 1
-				.append(mYear).append("-").append(mMonth + 1).append("-")
-				.append(mDay));
+				.append(mDay).append("/").append(mMonth + 1).append("/")
+				.append(mYear));
 	}
 
 	// metodo para enserir um ganho
@@ -102,8 +102,8 @@ public class CadastrarGanho extends Activity {
 				ContentValues ctv = new ContentValues();
 				ctv.put("descricao", descricao.getText().toString());
 				ctv.put("local", local.getText().toString());
-				String v=valor.getText().toString();
-				v=v.replace(',','.');
+				String v = valor.getText().toString();
+				v = v.replace(',', '.');
 				ctv.put("valor", v);
 				ctv.put("data", data.getText().toString());
 

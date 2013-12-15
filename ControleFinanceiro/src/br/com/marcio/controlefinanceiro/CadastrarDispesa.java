@@ -71,8 +71,8 @@ public class CadastrarDispesa extends Activity {
 	private void updateDisplay() {
 		txtData.setText(new StringBuilder()
 				// Month is 0 based so add 1
-				.append(mYear).append("-").append(mMonth + 1)
-				.append("-").append(mDay));
+				.append(mDay).append("/").append(mMonth + 1).append("/")
+				.append(mYear));
 	}
 
 	public void inserirDespesa(View cadastro) {
@@ -80,8 +80,6 @@ public class CadastrarDispesa extends Activity {
 		EditText local = (EditText) findViewById(R.id.textoLocal);
 		EditText data = (EditText) findViewById(R.id.textoData);
 		EditText valor = (EditText) findViewById(R.id.textoValor);
-		
-		
 
 		if (descricao.getText().toString().length() <= 0) {
 			descricao.setError("Preencha o campo Descrição.");
@@ -103,8 +101,8 @@ public class CadastrarDispesa extends Activity {
 				ContentValues ctv = new ContentValues();
 				ctv.put("descricao", descricao.getText().toString());
 				ctv.put("local", local.getText().toString());
-				String v=valor.getText().toString();
-				v=v.replace(',','.');
+				String v = valor.getText().toString();
+				v = v.replace(',', '.');
 				ctv.put("valor", v);
 				ctv.put("data", data.getText().toString());
 

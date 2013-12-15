@@ -17,10 +17,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+public class ListarGanhos extends Activity {
 
-
-public class ListarGanhos extends Activity  {
-	
 	String txt1;
 	String txt2;
 	int aux;
@@ -95,15 +93,15 @@ public class ListarGanhos extends Activity  {
 		if (aux == 1) {
 			txtDataIni.setText(new StringBuilder()
 					// Month is 0 based so add 1
-					.append(mYear).append("-").append(mMonth + 1).append("-")
-					.append(mDay));
+					.append(mDay).append("/").append(mMonth + 1).append("/")
+					.append(mYear));
 			txt1 = txtDataIni.getText().toString();
 			aux = 0;
 		} else if (aux == 2) {
 			txtDataFim.setText(new StringBuilder()
 					// Month is 0 based so add 1
-					.append(mYear).append("-").append(mMonth + 1).append("-")
-					.append(mDay));
+					.append(mDay).append("/").append(mMonth + 1).append("/")
+					.append(mYear));
 			txt2 = txtDataFim.getText().toString();
 			aux = 0;
 		}
@@ -124,8 +122,8 @@ public class ListarGanhos extends Activity  {
 						R.id.texvValor, R.id.texvData };
 
 				android.widget.SimpleCursorAdapter ad = new android.widget.SimpleCursorAdapter(
-						getBaseContext(), R.layout.listar_ganhos_model,
-						cursor, from, to);
+						getBaseContext(), R.layout.listar_ganhos_model, cursor,
+						from, to);
 
 				Toast.makeText(getBaseContext(), txt1, Toast.LENGTH_SHORT)
 						.show();
@@ -142,4 +140,3 @@ public class ListarGanhos extends Activity  {
 	}
 
 }
-

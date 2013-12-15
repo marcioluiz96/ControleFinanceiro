@@ -7,7 +7,6 @@
     <string name="textDescricao">Descrição:</string>
     <string name="textValor"> Valor:</string>
     <string name="textData">Data:</string>
-    
     <string name="btnCadastrar">Cadastrar</string>
     <string name="lbCadastarDis">Cadastrar nova despesa</string>
     <string name="lbCadastarGan">Cadastrar novo ganho</string>

@@ -93,15 +93,15 @@ public class ListarDespesas extends Activity {
 		if (aux == 1) {
 			txtDataIni.setText(new StringBuilder()
 					// Month is 0 based so add 1
-					.append(mYear).append("-").append(mMonth + 1).append("-")
-					.append(mDay));
+					.append(mDay).append("/").append(mMonth + 1).append("/")
+					.append(mYear));
 			txt1 = txtDataIni.getText().toString();
 			aux = 0;
 		} else if (aux == 2) {
 			txtDataFim.setText(new StringBuilder()
 					// Month is 0 based so add 1
-					.append(mYear).append("-").append(mMonth + 1).append("-")
-					.append(mDay));
+					.append(mDay).append("/").append(mMonth + 1).append("/")
+					.append(mYear));
 			txt2 = txtDataFim.getText().toString();
 			aux = 0;
 		}
